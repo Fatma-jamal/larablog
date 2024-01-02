@@ -12,6 +12,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('front.signin');
+        return $request->expectsJson() ? null : route('account.front.signin');
     }
 }

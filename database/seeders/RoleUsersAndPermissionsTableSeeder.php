@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Role;
-use App\Models\Permission;
+use App\Models\Account\User;
+use App\Models\Account\Role;
+use App\Models\Account\Permission;
 
 class RoleUsersAndPermissionsTableSeeder extends Seeder
 {

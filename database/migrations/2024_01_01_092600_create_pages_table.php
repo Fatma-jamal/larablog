@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tenants', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('label');
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('slug')->unique(); // about-us
+            $table->string('title'); // subtitle metatag=>SEO seo, optionalfield, 
+            $table->string('content');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('pages');
     }
 };

@@ -1,21 +1,22 @@
-@extends('layouts.page')
+@extends('layouts.front')
 
 @section('content')
 <!-- START: Main Content-->
 <div class="container">
             <div class="row vh-100 justify-content-between align-items-center">
                 <div class="col-12">
-                    <form action="#" class="row row-eq-height lockscreen  mt-5 mb-5">
+                    <form method="POST" action="{{ route('account.front.signin.submit') }}" class="row row-eq-height lockscreen  mt-5 mb-5">
+                        @csrf
                         <div class="lock-image col-12 col-sm-5"></div>
                         <div class="login-form col-12 col-sm-7">
                             <div class="form-group mb-3">
-                                <label for="emailaddress">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                <label for="username">Username</label>
+                                <input class="form-control" type="text" name="username" id="username" required="" placeholder="Enter your username">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="password">Password</label>
-                                <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+                                <input class="form-control" type="password" name="password" required="" id="password" placeholder="Enter your password">
                             </div>
 
                             <div class="form-group mb-3">
@@ -26,7 +27,7 @@
                             </div>
 
                             <div class="form-group mb-0">
-                                <button class="btn btn-primary" type="submit"> Log In </button>
+                                <button class="btn btn-primary" type="submit"> Sign In </button>
                             </div>
                             <p class="my-2 text-muted">--- Or connect with ---</p>
                             <a class="btn btn-social btn-dropbox text-white mb-2">
@@ -41,7 +42,7 @@
                             <a class="btn btn-social btn-google text-white mb-2">
                                 <i class="icon-social-google align-middle"></i>
                             </a>
-                            <div class="mt-2">Don't have an account? <a href="page-register.html">Create an Account</a></div>
+                            <div class="mt-2">Don't have an account? <a href="{{ route('account.front.signup') }}">Create an Account</a></div>
                         </div>
                     </form>
                 </div>

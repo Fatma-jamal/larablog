@@ -248,10 +248,13 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <form method="POST" action="{{route('account.back.signout')}}" class="dropdown-item d-flex align-items-center">
+                @csrf
+                <button type="submit">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
-              </a>
+                </button>
+              </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -268,7 +271,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('user.dashboard') }}">
+        <a class="nav-link collapsed" href="{{ route('dashboard.user') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>

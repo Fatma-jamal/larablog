@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\PostController;
-use App\Http\Controllers\Front\SigninController;
-use App\Http\Controllers\Front\SignupController;
-use App\Http\Controllers\User\SignoutController;
-use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Blog\PostController;
+use App\Http\Controllers\Account\SigninController;
+use App\Http\Controllers\Account\SignupController;
+use App\Http\Controllers\Account\SignoutController;
+use App\Http\Controllers\Page\PageController;
+use App\Http\Controllers\DashboardController;
 
 // use App\Http\Middleware\CheckPermission;
 
@@ -22,18 +23,21 @@ use App\Http\Controllers\User\DashboardController;
 |
 */
 
-Route::get('/',[HomeController::class, 'home'])->name('front.home');
+Route::get('/',[HomeController::class, 'show'])->name('home.front');
 //
-Route::get('signin', [SigninController::class, 'view'])->name('front.signin');
-Route::post('signin', [SigninController::class, 'authenticate']);
+Route::get('/signin', [SigninController::class, 'view'])->name('account.front.signin');
+Route::post('/signin', [SigninController::class, 'authenticate'])->name('account.front.signin.submit');
 //
-Route::get('signup', [SignupController::class, 'view'])->name('front.signup');
-Route::post('signup', [SignupController::class, 'store']);
+Route::get('/signup', [SignupController::class, 'view'])->name('account.front.signup');
+Route::post('/signup', [SignupController::class, 'store']);
 //
-// Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
-    Route::post('/signout', [SignoutController::class, 'signout'])->name('user.signout');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/user/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard.user');
+    Route::post('/signout', [SignoutController::class, 'signout'])->name('account.back.signout');
+});
+
+Route::get('/pages/{slug}', [PageController::class, 'show'])->name('page.front.page');
+
 
 /*
 Route::get('/dashboard', function () {

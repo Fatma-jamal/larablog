@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.front')
 
 @section('content')
 <!-- START: Main Content-->
@@ -39,7 +39,7 @@
                     <a class="btn btn-social btn-google text-white mb-2">
                         <i class="icon-social-google align-middle"></i>
                     </a>
-                    <div class="mt-2">Already have an account? <a href="page-login.html">Sign In</a></div>
+                    <div class="mt-2">Already have an account? <a href="{{ route('account.front.signin') }}">Sign In</a></div>
                 </div>
             </form>
         </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Account;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Account\User;
 
 class SigninController extends Controller
 {
     public function view(Request $request)
     {
-        return view('front.signin');
+        return view('front.account.signin');
     }
 
     public function authenticate(Request $request)
@@ -38,10 +38,11 @@ class SigninController extends Controller
         //     return null;
         // }
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->route('user.dashboard')
+            //
+            return redirect()->route('dashboard.user')
                 ->withSuccess('You have successfully signed in!');
         }
     }

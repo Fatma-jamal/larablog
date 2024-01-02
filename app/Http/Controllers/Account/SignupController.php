@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\Account;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\User;
+use App\Models\Account\User;
 
 class SignupController extends Controller
 {
@@ -20,7 +20,7 @@ class SignupController extends Controller
      */
     public function view()
     {
-        return view('front.signup');
+        return view('front.account.signup');
     }
 
     /**
